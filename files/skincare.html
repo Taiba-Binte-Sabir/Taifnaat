@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAIFNAAT | skincare</title>
+<link rel="icon" href="Taifnaat.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Teachers:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: #09090d;
+             font-family: "Teachers", sans-serif;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 40px;
+            background: white;
+            border-bottom: 1px solid #eee;
+            position: relative;
+        }
+
+        /* LOGO */
+        .logo {
+            flex-shrink: 0;
+        }
+
+        /* MENU CENTER */
+        .menu {
+            display: flex;
+            gap: 22px;
+            align-items: center;
+            flex: 1;
+            justify-content: center;
+        }
+
+        /* MENU ITEM */
+        .menu-item {
+            position: relative;
+            cursor: pointer;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .menu-item a {
+            text-decoration: none;
+            color: #010101;
+        }
+
+        /* UNDERLINE EFFECT */
+        .menu-item::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0%;
+            height: 1px;
+            background: black;
+            transition: 0.3s;
+        }
+
+        .menu-item:hover::after {
+            width: 100%;
+        }
+
+        /* DROPDOWN */
+        .submenu {
+            position: absolute;
+            top: 35px;
+            left: 0;
+            background: white;
+            border: 1px solid #ddd;
+            flex-direction: column;
+            min-width: 160px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: 0.3s;
+            display: flex;
+        }
+
+        /* DROPDOWN LINKS */
+        .submenu a {
+            padding: 10px 15px;
+            text-decoration: none;
+            color: black;
+            font-size: 14px;
+            transition: 0.3s;
+            display: block;
+        }
+
+        /* HOVER EFFECT */
+        .submenu a:hover {
+            background: #f2f2f2;
+            padding-left: 18px;
+        }
+
+        .dropdown:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* RIGHT SECTION */
+        .right-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* ICONS */
+        .icons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* SEARCH */
+        .search-box {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        #search-input {
+            width: 0;
+            opacity: 0;
+            padding: 5px;
+            border: 1px solid #ccc;
+            transition: 0.3s;
+            margin-left: 5px;
+        }
+
+        .search-box.active #search-input {
+            width: 120px;
+            opacity: 1;
+        }
+
+        /* CART BADGE */
+        .cart {
+            position: relative;
+        }
+
+        .badge {
+            position: absolute;
+            top: -6px;
+            right: -8px;
+            background: black;
+            color: white;
+            font-size: 10px;
+            padding: 2px 5px;
+            border-radius: 50%;
+        }
+
+        /* ICON HOVER */
+        .icons i {
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .icons i:hover {
+            transform: scale(1.2);
+        }
+
+        /* HAMBURGER */
+        .menu-toggle {
+            display: none;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        /* MOBILE */
+        @media(max-width:900px) {
+
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            /* MENU */
+            .menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 25px;
+                max-height: 0;
+                overflow: hidden;
+                transition: 0.3s;
+            }
+
+            .menu.active {
+                max-height: 500px;
+            }
+
+            .menu-item {
+                width: 100%;
+                padding: 10px 0;
+            }
+
+            /* DROPDOWN MOBILE */
+            .submenu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                display: none;
+                border: none;
+            }
+
+            .menu-item.active .submenu {
+                display: flex;
+            }
+
+            /* ALIGNMENT FIX */
+            .logo {
+                flex: 1;
+            }
+
+            .icons {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                right: 20px;
+            }
+
+        }
+
+        .navbar {
+            position: relative;
+            z-index: 1000;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        /*navbar end*/
+
+        .section {
+            background-color:#09090d;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .heading {
+            color: white;
+            text-align: center;
+            width: 100%;
+            margin: 40px 0 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .heading::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            height: 1px;
+            background: white;
+            left: 50%;
+            bottom: -5px;
+            transform: translateX(-50%);
+            transition: 0.4s;
+            box-shadow: 0 0 0px white;
+        }
+
+        .heading:hover::after {
+            width: 30%;
+            box-shadow: 0 0 8px white, 0 0 15px white;
+        }
+
+        .card {
+            width: 190px;
+            height: 254px;
+            border-radius: 8px;
+            background: #f5f5f5;
+            position: relative;
+            padding: 1.8rem;
+            border: 2px solid #c3c6ce;
+            transition: 0.5s ease-out;
+            overflow: visible;
+            grid-row: auto;
+        }
+
+        .card-wrapper {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            gap: 5px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card-description {
+            margin-top: 25px;
+            text-align: center;
+            font-size: 15px;
+            color: #666;
+        }
+
+        .card img {
+            width: 240px;
+            height: 245px;
+            border-radius: 8px;
+        }
+
+        .card-details {
+            color: black;
+            height: 100%;
+            gap: .5em;
+            display: grid;
+            place-content: center;
+        }
+
+        .card-button {
+            transform: translate(-50%, 125%);
+            width: 60%;
+            border-radius: 1rem;
+            border: 2px solid black;
+            background-color: white;
+            color: black;
+            font-size: 1rem;
+            padding: .5rem 1rem;
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            opacity: 0;
+            transition: 0.3s ease-out;
+        }
+
+        .text-body {
+            color: rgb(87, 87, 87);
+        }
+
+        .text-title {
+            margin-bottom: 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+             font-family: "Teachers", sans-serif;
+        }
+
+        .price {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #333;
+            margin-top: -30px;
+        }
+
+        .card:hover {
+            border-color: #010101;
+            box-shadow: 0 4px 18px 0 rgb(167, 152, 152);
+        }
+
+        .card:hover .card-button {
+            transform: translate(-50%, 50%);
+            opacity: 1;
+        }
+
+        /*Animation*/
+
+        .card,
+        .card-description {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s ease-out;
+        }
+
+        .show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        /* NEWSLETTER */
+.newsletter{
+  display: flex;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.newsletter input{
+  border: none;
+  padding: 8px 10px;
+  flex: 1;
+  outline: none;
+  font-size: 13px;
+}
+
+.newsletter button{
+  background: black;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.newsletter button:hover{
+  background: #111;
+}
+/* FOOTER */
+.footer{
+  background: white;
+  color: black;
+  padding: 40px 20px 10px;
+  border-top: 1px solid #eee;
+  
+}
+
+/* CONTAINER */
+.footer-container{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* COLUMNS */
+.footer-col{
+  flex: 1;
+  min-width: 200px;
+}
+
+/* HEADINGS */
+.footer-col h3{
+  font-size: 16px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+/* UNDERLINE EFFECT */
+.footer-col h3::after{
+  content: "";
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: black;
+  margin-top: 5px;
+}
+
+/* LINKS */
+.footer-col a{
+  display: block;
+  text-decoration: none;
+  color: black;
+  margin: 5px 0;
+  transition: 0.3s;
+}
+
+.footer-col a:hover{
+  padding-left: 5px;
+}
+
+/* TEXT */
+.footer-col p{
+  font-size: 14px;
+  color: #555;
+}
+
+/* BOTTOM */
+.footer-bottom{
+  text-align: center;
+  border-top: 1px solid #ddd;
+  margin-top: 20px;
+  padding-top: 10px;
+  font-size: 13px;
+  color: #666;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .footer-container{
+    flex-direction: column;
+    text-align: center;
+  }
+}
+/* FOOTER */
+.footer{
+  background: white;
+  color: black;
+  padding: 40px 20px 10px;
+  border-top: 1px solid #eee;
+  margin-top: 50px;
+}
+
+/* CONTAINER */
+.footer-container{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* COLUMN */
+.footer-col{
+  flex: 1;
+  min-width: 200px;
+}
+
+/* LOGO TEXT */
+.footer-col img{
+  margin-bottom: 10px;
+}
+
+/* HEADINGS */
+.footer-col h3{
+  font-size: 16px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+/* UNDERLINE */
+.footer-col h3::after{
+  content:"";
+  display:block;
+  width:40px;
+  height:1px;
+  background:black;
+  margin-top:5px;
+}
+
+/* LINKS */
+.footer-col a{
+  display:block;
+  text-decoration:none;
+  color:black;
+  margin:6px 0;
+  font-size:14px;
+  transition:0.3s;
+}
+
+.footer-col a:hover{
+  padding-left:6px;
+}
+
+/* TEXT */
+.footer-col p{
+  font-size:14px;
+  color:#555;
+}
+
+/* BOTTOM */
+.footer-bottom{
+  text-align:center;
+  border-top:1px solid #ddd;
+  margin-top:20px;
+  padding-top:10px;
+  font-size:13px;
+  color:#666;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .footer-container{
+    flex-direction:column;
+    text-align:center;
+  }
+}
+.top-text {
+    margin: 0 50px 30px;
+    color: white;
+    line-height: 1.6;
+}
+
+@keyframes fadeSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+
+    <div class="logo">
+      <img src="Taifnaat.png" width="100">
+    </div>
+
+    <div class="menu">
+
+      <div class="menu-item"><a href="index.html">Home</a></div>
+      <div class="menu-item"><a href="giftarticles.html">Gift Articles</a></div>
+
+      <div class="menu-item dropdown">Toys <i class="bi bi-chevron-down"></i>
+        <div class="submenu">
+          <a href="dolls.html">Doll</a>
+          <a href="cars.html">Cars</a>
+          <a href="stuffed.html">Stuffed Toys</a>
+        </div>
+      </div>
+
+      <div class="menu-item"><a href="offsup.html">Office Supplies</a></div>
+      <div class="menu-item"><a href="ArtSupp.html">Art Supplies</a></div>
+
+
+      <div class="menu-item dropdown"><a href="cosmetics.html">Cosmetics </a><i class="bi bi-chevron-down"></i>
+        <div class="submenu">
+          <a href="makeup.html">Makeup</a>
+          <a href="skincare.html">Skin Care</a>
+          <a href="bodycare.html">Body Care</a>
+          <a href="haircare.html">Hair Care</a>
+        </div>
+      </div>
+
+      <div class="menu-item dropdown"><a href="books.html">Books </a><i class="bi bi-chevron-down"></i>
+        <div class="submenu">
+          <a href="novel.html">Novels</a>
+          <a href="KidsBooks.html">Kids Books</a>
+          <a href="IslamicBooks.html">Islamic Books</a>
+          <a href="ColouringBooks.html">Colouring Books</a>
+        </div>
+      </div>
+
+      <div class="menu-item"><a href="gc.html">Greeting Cards </a></div>
+      <div class="menu-item"><a href="bags.html">Bags</a></div>
+      <div class="menu-item"><a href="wallets.html">Wallets</a></div>
+
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="right-section">
+
+      <div class="icons">
+
+       <a href="cart.html" class="icon cart">
+  <i class="bi bi-cart"></i>
+  <span class="badge">0</span>
+</a>
+        </div>
+
+        <a href="signup.php">
+          <i class="bi bi-person"></i>
+        </a>
+        <div class="search-box">
+          <i class="bi bi-search" id="search-icon"></i>
+          <input type="text" placeholder="Search..." id="search-input">
+        </div>
+
+      </div>
+
+      <div class="menu-toggle">
+        <i class="bi bi-list"></i>
+      </div>
+
+    </div>
+
+  </nav>
+
+    <!--navbar end-->
+
+    <div class="section">
+
+
+
+    <h1 class="heading">Skincare</h1>
+
+    <!-- Card 1 -->
+    <div class="card-wrapper">
+        <div class="card">
+            <div class="card-details">
+                <img src="s1.jpg" alt="">
+                <p class="text-title">Face Wash</p>
+                <p class="price">Rs. 800</p>
+            </div>
+            <button class="card-button">Buy Now</button>
+        </div>
+        <p class="card-description">Gentle face wash for daily use.</p>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card-wrapper">
+        <div class="card">
+            <div class="card-details">
+                <img src="moshu.jpg" alt="">
+                <p class="text-title">Moisturizer</p>
+                <p class="price">Rs. 1,500</p>
+            </div>
+            <button class="card-button">Buy Now</button>
+        </div>
+        <p class="card-description">Keeps skin soft and hydrated.</p>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card-wrapper">
+        <div class="card">
+            <div class="card-details">
+                <img src="sunscreen.jpg" alt="">
+                <p class="text-title">Sunscreen SPF 50</p>
+                <p class="price">Rs. 1,200</p>
+            </div>
+            <button class="card-button">Buy Now</button>
+        </div>
+        <p class="card-description">Protects from harmful sun rays.</p>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card-wrapper">
+        <div class="card">
+            <div class="card-details">
+                <img src="serum.jpg" alt="">
+                <p class="text-title">Vitamin C Serum</p>
+                <p class="price">Rs. 2,000</p>
+            </div>
+            <button class="card-button">Buy Now</button>
+        </div>
+        <p class="card-description">Brightens and improves skin.</p>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="card-wrapper">
+        <div class="card">
+            <div class="card-details">
+                <img src="facemask.jpg" alt="">
+                <p class="text-title">Face Mask</p>
+                <p class="price">Rs. 700</p>
+            </div>
+            <button class="card-button">Buy Now</button>
+        </div>
+        <p class="card-description">Deep cleansing and refreshing.</p>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="card-wrapper">
+        <div class="card">
+            <div class="card-details">
+                <img src="night.jpg" alt="">
+                <p class="text-title">Night Cream</p>
+                <p class="price">Rs. 1,800</p>
+            </div>
+            <button class="card-button">Buy Now</button>
+        </div>
+        <p class="card-description">Repairs skin overnight.</p>
+    </div>
+
+    <!-- Card 7 -->
+    <div class="card-wrapper">
+        <div class="card">
+            <div class="card-details">
+                <img src="tonor.jpg" alt="">
+                <p class="text-title">Toner</p>
+                <p class="price">Rs. 900</p>
+            </div>
+            <button class="card-button">Buy Now</button>
+        </div>
+        <p class="card-description">Balances and refreshes skin.</p>
+    </div>
+
+    <!-- Card 8 -->
+    <div class="card-wrapper">
+        <div class="card">
+            <div class="card-details">
+                <img src="eye.jpg" alt="">
+                <p class="text-title">Eye Cream</p>
+                <p class="price">Rs. 1,600</p>
+            </div>
+            <button class="card-button">Buy Now</button>
+        </div>
+        <p class="card-description">Reduces dark circles.</p>
+    </div>
+
+    <!-- Card 9 -->
+    <div class="card-wrapper">
+        <div class="card">
+            <div class="card-details">
+                <img src="scrub.jpg" alt="">
+                <p class="text-title">Scrub</p>
+                <p class="price">Rs. 850</p>
+            </div>
+            <button class="card-button">Buy Now</button>
+        </div>
+        <p class="card-description">Removes dead skin cells.</p>
+    </div>
+
+    <!-- Card 10 -->
+    <div class="card-wrapper">
+        <div class="card">
+            <div class="card-details">
+                <img src="alovera.jpg" alt="">
+                <p class="text-title">Aloe Vera Gel</p>
+                <p class="price">Rs. 600</p>
+            </div>
+            <button class="card-button">Buy Now</button>
+        </div>
+        <p class="card-description">Soothes and hydrates skin.</p>
+    </div>
+
+</div>
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- LOGO + ABOUT -->
+    <div class="footer-col">
+      <img src="Taifnaat.png" width="100">
+      <p>We provide high quality gifts, stationery, and lifestyle products to make your everyday special.</p>
+    </div>
+
+    <!-- SHOP LINKS (NAVBAR MATCH) -->
+    <div class="footer-col">
+      <h3>Shop</h3>
+      <a href="index.html">Home</a>
+      <a href="giftarticles.html">Gift Articles</a>
+      <a href="dolls.html">Toys</a>
+      <a href="offsup.html">Office Supplies</a>
+      <a href="ArtSupp.html">Art Supplies</a>
+    </div>
+
+    <!-- MORE LINKS -->
+    <div class="footer-col">
+      <h3>More</h3>
+      <a href="cosmetics.html">Cosmetics</a>
+      <a href="books.html">Books</a>
+      <a href="gc.html">Greeting Cards</a>
+      <a href="bags.html">Bags</a>
+      <a href="wallets.html">Wallets</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+    </div>
+
+    <!-- NEWSLETTER -->
+    <div class="footer-col">
+      <h3>Get 10% OFF</h3>
+      <p>Subscribe to our newsletter</p>
+
+      <div class="newsletter">
+        <input type="email" placeholder="Enter your email">
+        <button>Subscribe</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 Taifnaat | All Rights Reserved
+  </div>
+
+</footer>
+
+    <script>
+
+        const cards = document.querySelectorAll('.card-wrapper');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const wrapper = entry.target;
+
+                    // Animate card inside wrapper
+                    const card = wrapper.querySelector('.card');
+                    if (card) card.classList.add('show');
+
+                    // Animate card-description outside card
+                    const desc = wrapper.querySelector('.card-description');
+                    if (desc) setTimeout(() => desc.classList.add('show'), 200);
+
+                }
+            });
+        }, { threshold: 0.3 });
+
+        cards.forEach(wrapper => observer.observe(wrapper));
+
+    </script>
+  <script src="index.js"></script>
+ <script src="main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+
+</html>

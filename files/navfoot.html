@@ -1,0 +1,554 @@
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- LOGO + ABOUT -->
+    <div class="footer-col">
+      <img src="Taifnaat.png" width="100">
+      <p>We provide high quality gifts, stationery, and lifestyle products to make your everyday special.</p>
+    </div>
+
+    <!-- SHOP LINKS (NAVBAR MATCH) -->
+    <div class="footer-col">
+      <h3>Shop</h3>
+      <a href="index.html">Home</a>
+      <a href="giftarticles.html">Gift Articles</a>
+      <a href="dolls.html">Toys</a>
+      <a href="offsup.html">Office Supplies</a>
+      <a href="ArtSupp.html">Art Supplies</a>
+    </div>
+
+    <!-- MORE LINKS -->
+    <div class="footer-col">
+      <h3>More</h3>
+      <a href="cosmetics.html">Cosmetics</a>
+      <a href="books.html">Books</a>
+      <a href="gc.html">Greeting Cards</a>
+      <a href="bags.html">Bags</a>
+      <a href="wallets.html">Wallets</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+
+    <!-- NEWSLETTER -->
+    <div class="footer-col">
+      <h3>Get 10% OFF</h3>
+      <p>Subscribe to our newsletter</p>
+
+      <div class="newsletter">
+        <input type="email" placeholder="Enter your email">
+        <button>Subscribe</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 Taifnaat | All Rights Reserved
+  </div>
+
+</footer>
+
+/* NEWSLETTER */
+.newsletter{
+  display: flex;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.newsletter input{
+  border: none;
+  padding: 8px 10px;
+  flex: 1;
+  outline: none;
+  font-size: 13px;
+}
+
+.newsletter button{
+  background: black;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.newsletter button:hover{
+  background: #111;
+}
+/* FOOTER */
+.footer{
+  background: white;
+  color: black;
+  padding: 40px 20px 10px;
+  border-top: 1px solid #eee;
+  
+}
+
+/* CONTAINER */
+.footer-container{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* COLUMNS */
+.footer-col{
+  flex: 1;
+  min-width: 200px;
+}
+
+/* HEADINGS */
+.footer-col h3{
+  font-size: 16px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+/* UNDERLINE EFFECT */
+.footer-col h3::after{
+  content: "";
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: black;
+  margin-top: 5px;
+}
+
+/* LINKS */
+.footer-col a{
+  display: block;
+  text-decoration: none;
+  color: black;
+  margin: 5px 0;
+  transition: 0.3s;
+}
+
+.footer-col a:hover{
+  padding-left: 5px;
+}
+
+/* TEXT */
+.footer-col p{
+  font-size: 14px;
+  color: #555;
+}
+
+/* BOTTOM */
+.footer-bottom{
+  text-align: center;
+  border-top: 1px solid #ddd;
+  margin-top: 20px;
+  padding-top: 10px;
+  font-size: 13px;
+  color: #666;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .footer-container{
+    flex-direction: column;
+    text-align: center;
+  }
+}
+/* FOOTER */
+.footer{
+  background: white;
+  color: black;
+  padding: 40px 20px 10px;
+  border-top: 1px solid #eee;
+  margin-top: 50px;
+}
+
+/* CONTAINER */
+.footer-container{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* COLUMN */
+.footer-col{
+  flex: 1;
+  min-width: 200px;
+}
+
+/* LOGO TEXT */
+.footer-col img{
+  margin-bottom: 10px;
+}
+
+/* HEADINGS */
+.footer-col h3{
+  font-size: 16px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+/* UNDERLINE */
+.footer-col h3::after{
+  content:"";
+  display:block;
+  width:40px;
+  height:1px;
+  background:black;
+  margin-top:5px;
+}
+
+/* LINKS */
+.footer-col a{
+  display:block;
+  text-decoration:none;
+  color:black;
+  margin:6px 0;
+  font-size:14px;
+  transition:0.3s;
+}
+
+.footer-col a:hover{
+  padding-left:6px;
+}
+
+/* TEXT */
+.footer-col p{
+  font-size:14px;
+  color:#555;
+}
+
+/* BOTTOM */
+.footer-bottom{
+  text-align:center;
+  border-top:1px solid #ddd;
+  margin-top:20px;
+  padding-top:10px;
+  font-size:13px;
+  color:#666;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .footer-container{
+    flex-direction:column;
+    text-align:center;
+  }
+}
+.top-text {
+    margin: 0 50px 30px;
+    color: white;
+    line-height: 1.6;
+}
+
+
+<nav class="navbar">
+
+<div class="logo">
+  <img src="Taifnaat.png" width="100">
+</div>
+
+<div class="menu">
+
+<div class="menu-item"><a href="index.html">Home</a></div>
+<div class="menu-item"><a href="giftarticles.html">Gift Articles</a></div>
+
+<div class="menu-item dropdown">Toys <i class="bi bi-chevron-down"></i>
+  <div class="submenu">
+    <a href="dolls.html">Doll</a>
+    <a href="cars.html">Cars</a>
+    <a href="stuffed.html">Stuffed Toys</a>
+  </div>
+</div>
+
+<div class="menu-item"><a href="offsup.html">Office Supplies</a></div>
+<div class="menu-item"><a href="ArtSupp.html">Art Supplies</a></div>
+
+
+<div class="menu-item dropdown"><a href="cosmetics.html">Cosmetics </a><i class="bi bi-chevron-down"></i>
+  <div class="submenu">
+    <a href="makeup.html">Makeup</a>
+    <a href="skincare.html">Skin Care</a>
+    <a href="bodycare.html">Body Care</a>
+    <a href="haircare.html">Hair Care</a>
+  </div>
+</div>
+
+<div class="menu-item dropdown"><a href="books.html">Books </a><i class="bi bi-chevron-down"></i>
+  <div class="submenu">
+    <a href="novel.html">Novels</a>
+    <a href="KidsBooks.html">Kids Books</a>
+    <a href="IslamicBooks.html">Islamic Books</a>
+    <a href="ColouringBooks.html">Colouring Books</a>
+  </div>
+</div>
+
+<div class="menu-item"><a href="gc.html">Greeting Cards </a></div>
+<div class="menu-item"><a href="bags.html">Bags</a></div>
+<div class="menu-item"><a href="wallets.html">Wallets</a></div>
+
+
+</div>
+
+<!-- RIGHT SIDE -->
+<div class="right-section">
+
+<div class="icons">
+
+<div class="icon cart">
+  <i class="bi bi-cart"></i>
+  <span class="badge">0</span>
+</div>
+
+<i class="bi bi-person"></i>
+
+<div class="search-box">
+  <i class="bi bi-search" id="search-icon"></i>
+  <input type="text" placeholder="Search..." id="search-input">
+</div>
+
+</div>
+
+<div class="menu-toggle">
+  <i class="bi bi-list"></i>
+</div>
+
+</div>
+
+</nav>
+
+
+/* NAVBAR */
+.navbar{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:15px 40px;
+background:white;
+border-bottom:1px solid #eee;
+position:relative;
+font-family: 'Teachers',sans-serif;
+}
+.menu-item a {
+            text-decoration: none;
+            color: #010101;
+        }
+/* LOGO */
+.logo{
+flex-shrink:0;
+}
+
+/* MENU CENTER */
+.menu{
+display:flex;
+gap:22px;
+align-items:center;
+flex:1;
+justify-content:center;
+}
+
+/* MENU ITEM */
+.menu-item{
+position:relative;
+cursor:pointer;
+font-size:15px;
+display:flex;
+align-items:center;
+gap:5px;
+}
+
+/* UNDERLINE EFFECT */
+.menu-item::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-5px;
+width:0%;
+height:1px;
+background:black;
+transition:0.3s;
+}
+
+.menu-item:hover::after{
+width:100%;
+}
+
+/* DROPDOWN */
+.submenu{
+position:absolute;
+top:35px;
+left:0;
+background:white;
+border:1px solid #ddd;
+flex-direction:column;
+min-width:160px;
+opacity:0;
+visibility:hidden;
+transform:translateY(10px);
+transition:0.3s;
+display:flex;
+}
+/* DROPDOWN LINKS */
+.submenu a{
+padding:10px 15px;
+text-decoration:none;
+color:black;
+font-size:14px;
+transition:0.3s;
+display:block;
+}
+
+/* HOVER EFFECT */
+.submenu a:hover{
+background:#f2f2f2;
+padding-left:18px;
+}
+.dropdown:hover .submenu{
+opacity:1;
+visibility:visible;
+transform:translateY(0);
+}
+
+/* RIGHT SECTION */
+.right-section{
+display:flex;
+align-items:center;
+gap:20px;
+}
+
+/* ICONS */
+.icons{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+/* SEARCH */
+.search-box{
+position:relative;
+display:flex;
+align-items:center;
+}
+
+#search-input{
+width:0;
+opacity:0;
+padding:5px;
+border:1px solid #ccc;
+transition:0.3s;
+margin-left:5px;
+}
+
+.search-box.active #search-input{
+width:120px;
+opacity:1;
+}
+
+/* CART BADGE */
+.cart{
+position:relative;
+}
+
+.badge{
+position:absolute;
+top:-6px;
+right:-8px;
+background:black;
+color:white;
+font-size:10px;
+padding:2px 5px;
+border-radius:50%;
+}
+
+/* ICON HOVER */
+.icons i{
+cursor:pointer;
+transition:0.3s;
+}
+
+.icons i:hover{
+transform:scale(1.2);
+}
+
+/* HAMBURGER */
+.menu-toggle{
+display:none;
+font-size:22px;
+cursor:pointer;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+
+.navbar{
+padding:15px 20px;
+}
+
+/* MENU */
+.menu{
+position:absolute;
+top:100%;
+left:0;
+width:100%;
+background:white;
+flex-direction:column;
+padding:20px;
+max-height:0;
+overflow:hidden;
+transition:0.3s;
+}
+
+.menu.active{
+max-height:500px;
+}
+
+.menu-item{
+width:100%;
+padding:10px 0;
+}
+
+/* DROPDOWN MOBILE */
+.submenu{
+position:static;
+opacity:1;
+visibility:visible;
+transform:none;
+display:none;
+border:none;
+}
+
+.menu-item.active .submenu{
+display:flex;
+}
+
+/* ALIGNMENT FIX */
+.logo{
+flex:1;
+}
+
+.icons{
+position:absolute;
+left:50%;
+transform:translateX(-50%);
+}
+
+.menu-toggle{
+display:block;
+position:absolute;
+right:20px;
+}
+
+}
+.navbar {
+  position: relative;
+  z-index: 1000;
+}
+
+.dropdown {
+  position: absolute;
+  z-index: 2000;
+}

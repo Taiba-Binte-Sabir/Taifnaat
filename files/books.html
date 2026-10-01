@@ -1,0 +1,1395 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAIFNAAT | Books</title>
+<link rel="icon" href="Taifnaat.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Teachers:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+body {
+    background-color: #07090d;
+    font-family: 'Teachers' , sans-serif;
+}
+        /* NAVBAR */
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 40px;
+            background: white;
+            border-bottom: 1px solid #eee;
+            position: relative;
+        }
+.menu-item a {
+            text-decoration: none;
+            color: #010101;
+        }
+        /* LOGO */
+        .logo {
+            flex-shrink: 0;
+        }
+
+        /* MENU CENTER */
+        .menu {
+            display: flex;
+            gap: 22px;
+            align-items: center;
+            flex: 1;
+            justify-content: center;
+        }
+
+        /* MENU ITEM */
+        .menu-item {
+            position: relative;
+            cursor: pointer;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .menu-item a {
+            text-decoration: none;
+            color: #010101;
+        }
+
+        /* UNDERLINE EFFECT */
+        .menu-item::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0%;
+            height: 1px;
+            background: black;
+            transition: 0.3s;
+        }
+
+        .menu-item:hover::after {
+            width: 100%;
+        }
+
+        /* DROPDOWN */
+        .submenu {
+            position: absolute;
+            top: 35px;
+            left: 0;
+            background: white;
+            border: 1px solid #ddd;
+            flex-direction: column;
+            min-width: 160px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: 0.3s;
+            display: flex;
+        }
+
+        /* DROPDOWN LINKS */
+        .submenu a {
+            padding: 10px 15px;
+            text-decoration: none;
+            color: black;
+            font-size: 14px;
+            transition: 0.3s;
+            display: block;
+        }
+
+        /* HOVER EFFECT */
+        .submenu a:hover {
+            background: #f2f2f2;
+            padding-left: 18px;
+        }
+
+        .dropdown:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* RIGHT SECTION */
+        .right-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* ICONS */
+        .icons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* SEARCH */
+        .search-box {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        #search-input {
+            width: 0;
+            opacity: 0;
+            padding: 5px;
+            border: 1px solid #ccc;
+            transition: 0.3s;
+            margin-left: 5px;
+        }
+
+        .search-box.active #search-input {
+            width: 120px;
+            opacity: 1;
+        }
+
+        /* CART BADGE */
+        .cart {
+            position: relative;
+        }
+
+        .badge {
+            position: absolute;
+            top: -6px;
+            right: -8px;
+            background: black;
+            color: white;
+            font-size: 10px;
+            padding: 2px 5px;
+            border-radius: 50%;
+        }
+
+        /* ICON HOVER */
+        .icons i {
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .icons i:hover {
+            transform: scale(1.2);
+        }
+
+        /* HAMBURGER */
+        .menu-toggle {
+            display: none;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        /* MOBILE */
+        @media(max-width:900px) {
+
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            /* MENU */
+            .menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 25px;
+                max-height: 0;
+                overflow: hidden;
+                transition: 0.3s;
+            }
+
+            .menu.active {
+                max-height: 500px;
+            }
+
+            .menu-item {
+                width: 100%;
+                padding: 10px 0;
+            }
+
+            /* DROPDOWN MOBILE */
+            .submenu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                display: none;
+                border: none;
+            }
+
+            .menu-item.active .submenu {
+                display: flex;
+            }
+
+            /* ALIGNMENT FIX */
+            .logo {
+                flex: 1;
+            }
+
+            .icons {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                right: 20px;
+            }
+
+        }
+
+        .navbar {
+            position: relative;
+            z-index: 1000;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        /*navbar end*/
+
+        .section {
+            background-color: #07090d;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .heading {
+            color: white;
+            text-align: center;
+            width: 100%;
+            margin: 40px 0 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .heading::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            height: 1px;
+            background: white;
+            left: 50%;
+            bottom: -5px;
+            transform: translateX(-50%);
+            transition: 0.4s;
+            box-shadow: 0 0 0px white;
+            
+        }
+
+        .heading:hover::after {
+            width: 30%;
+            box-shadow: 0 0 8px white, 0 0 15px white;
+        }
+
+        .card {
+            width: 190px;
+            height: 254px;
+            border-radius: 8px;
+            background: #f5f5f5;
+            position: relative;
+            padding: 1.8rem;
+            border: 2px solid #c3c6ce;
+            transition: 0.5s ease-out;
+            overflow: visible;
+            grid-row: auto;
+        }
+
+        .card-wrapper {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            gap: 5px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card-description {
+            margin-top: 25px;
+            text-align: center;
+            font-size: 15px;
+            color: #666;
+        }
+
+        .card img {
+            width: 240px;
+            height: 245px;
+            border-radius: 8px;
+        }
+
+        .card-details {
+            color: black;
+            height: 100%;
+            gap: .5em;
+            display: grid;
+            place-content: center;
+        }
+
+        .card-button {
+            transform: translate(-50%, 125%);
+            width: 60%;
+            border-radius: 1rem;
+            border: 2px solid black;
+            background-color: white;
+            color: black;
+            font-size: 1rem;
+            padding: .5rem 1rem;
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            opacity: 0;
+            transition: 0.3s ease-out;
+        }
+
+        .text-body {
+            color: rgb(87, 87, 87);
+        }
+
+        .text-title {
+            margin-bottom: 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            font-family: 'Teachers',sans-serif;
+        }
+
+        .price {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #333;
+            margin-top: -30px;
+        }
+
+        .card:hover {
+            border-color: #010101;
+            box-shadow: 0 4px 18px 0 rgb(167, 152, 152);
+        }
+
+        .card:hover .card-button {
+            transform: translate(-50%, 50%);
+            opacity: 1;
+        }
+
+        /*Animation*/
+
+        .card,
+        .card-description {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s ease-out;
+        }
+
+        .show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        /* NEWSLETTER */
+.newsletter{
+  display: flex;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.newsletter input{
+  border: none;
+  padding: 8px 10px;
+  flex: 1;
+  outline: none;
+  font-size: 13px;
+}
+
+.newsletter button{
+  background: black;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.newsletter button:hover{
+  background: #111;
+}
+/* FOOTER */
+.footer{
+  background: white;
+  color: black;
+  padding: 40px 20px 10px;
+  border-top: 1px solid #eee;
+  
+}
+
+/* CONTAINER */
+.footer-container{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* COLUMNS */
+.footer-col{
+  flex: 1;
+  min-width: 200px;
+}
+
+/* HEADINGS */
+.footer-col h3{
+  font-size: 16px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+/* UNDERLINE EFFECT */
+.footer-col h3::after{
+  content: "";
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: black;
+  margin-top: 5px;
+}
+
+/* LINKS */
+.footer-col a{
+  display: block;
+  text-decoration: none;
+  color: black;
+  margin: 5px 0;
+  transition: 0.3s;
+}
+
+.footer-col a:hover{
+  padding-left: 5px;
+}
+
+/* TEXT */
+.footer-col p{
+  font-size: 14px;
+  color: #555;
+}
+
+/* BOTTOM */
+.footer-bottom{
+  text-align: center;
+  border-top: 1px solid #ddd;
+  margin-top: 20px;
+  padding-top: 10px;
+  font-size: 13px;
+  color: #666;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .footer-container{
+    flex-direction: column;
+    text-align: center;
+  }
+}
+/* FOOTER */
+.footer{
+  background: white;
+  color: black;
+  padding: 40px 20px 10px;
+  border-top: 1px solid #eee;
+  margin-top: 50px;
+}
+
+/* CONTAINER */
+.footer-container{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* COLUMN */
+.footer-col{
+  flex: 1;
+  min-width: 200px;
+}
+
+/* LOGO TEXT */
+.footer-col img{
+  margin-bottom: 10px;
+}
+
+/* HEADINGS */
+.footer-col h3{
+  font-size: 16px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+/* UNDERLINE */
+.footer-col h3::after{
+  content:"";
+  display:block;
+  width:40px;
+  height:1px;
+  background:black;
+  margin-top:5px;
+}
+
+/* LINKS */
+.footer-col a{
+  display:block;
+  text-decoration:none;
+  color:black;
+  margin:6px 0;
+  font-size:14px;
+  transition:0.3s;
+}
+
+.footer-col a:hover{
+  padding-left:6px;
+}
+
+/* TEXT */
+.footer-col p{
+  font-size:14px;
+  color:#555;
+}
+
+/* BOTTOM */
+.footer-bottom{
+  text-align:center;
+  border-top:1px solid #ddd;
+  margin-top:20px;
+  padding-top:10px;
+  font-size:13px;
+  color:#666;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .footer-container{
+    flex-direction:column;
+    text-align:center;
+  }
+}
+.top-text {
+    margin: 0 50px 30px;
+    color: white;
+    line-height: 1.6;
+}
+
+@keyframes fadeSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+    </style>
+</head>
+
+<body>
+
+
+   <nav class="navbar">
+
+<div class="logo">
+  <img src="Taifnaat.png" width="100">
+</div>
+
+<div class="menu">
+
+      <div class="menu-item"><a href="index.html">Home</a></div>
+      <div class="menu-item"><a href="giftarticles.html">Gift Articles</a></div>
+
+      <div class="menu-item dropdown">Toys <i class="bi bi-chevron-down"></i>
+        <div class="submenu">
+          <a href="dolls.html">Doll</a>
+          <a href="cars.html">Cars</a>
+          <a href="stuffed.html">Stuffed Toys</a>
+        </div>
+      </div>
+
+      <div class="menu-item"><a href="offsup.html">Office Supplies</a></div>
+      <div class="menu-item"><a href="ArtSupp.html">Art Supplies</a></div>
+
+
+      <div class="menu-item dropdown"><a href="cosmetics.html">Cosmetics </a><i class="bi bi-chevron-down"></i>
+        <div class="submenu">
+          <a href="makeup.html">Makeup</a>
+          <a href="skincare.html">Skin Care</a>
+          <a href="bodycare.html">Body Care</a>
+          <a href="haircare.html">Hair Care</a>
+        </div>
+      </div>
+
+      <div class="menu-item dropdown"><a href="books.html">Books </a><i class="bi bi-chevron-down"></i>
+        <div class="submenu">
+          <a href="novel.html">Novels</a>
+          <a href="KidsBooks.html">Kids Books</a>
+          <a href="IslamicBooks.html">Islamic Books</a>
+          <a href="ColouringBooks.html">Colouring Books</a>
+        </div>
+      </div>
+
+      <div class="menu-item"><a href="gc.html">Greeting Cards </a></div>
+      <div class="menu-item"><a href="bags.html">Bags</a></div>
+      <div class="menu-item"><a href="wallets.html">Wallets</a></div>
+
+
+</div>
+
+<!-- RIGHT SIDE -->
+<div class="right-section">
+
+      <div class="icons">
+
+       <a href="cart.html" class="icon cart">
+  <i class="bi bi-cart"></i>
+  <span class="badge">0</span>
+</a>
+        </div>
+
+        <a href="signup.php">
+          <i class="bi bi-person"></i>
+        </a>
+
+<div class="search-box">
+  <i class="bi bi-search" id="search-icon"></i>
+  <input type="text" placeholder="Search..." id="search-input">
+</div>
+
+</div>
+
+<div class="menu-toggle">
+  <i class="bi bi-list"></i>
+</div>
+
+</div>
+
+</nav>
+
+
+    <!--navbar end-->
+
+    <div class="section">
+
+        <!--Cars-->
+
+        
+      <h1 class="heading"> Urdu Novels</h1>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="pc1.jfif" alt="">
+                    <p class="text-title">Qaraqaram ka Taj Mahal</p>
+                    <p class="price">Rs.3000</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">A timeless story of love, sacrifice, <br>and unforgettable memories. </br> </p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="pc2.jfif" alt="">
+                    <p class="text-title">Aab e Hayat</p>
+                    <p class="price">Rs. 2700</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">A journey of faith, transformation, 
+                <br>and true success.</p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="pc3.jfif" alt="">
+                    <p class="text-title">Aks</p>
+                    <p class="price">Rs. 2800</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">Where every reflection reveals
+                <br> a deeper reality.</p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="pc4.jfif" alt="">
+                    <p class="text-title">Baab e dehar</p>
+                    <p class="price">Rs. 3,800</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">Unfolding the mysteries of
+                <br> time and destiny.</p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="pc5.jfif" alt="">
+                    <p class="text-title">Alif</p>
+                    <p class="price">Rs. 3,200</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">A story of faith, love,
+                <br> and inner awakening.</p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="pc6.jfif" alt="">
+                    <p class="text-title">Yaram</p>
+                    <p class="price">Rs. 2250</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">A story of love, friendship, 
+                <br>and unspoken emotion</p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="pc7.jfif" alt="">
+                    <p class="text-title">Maala</p>
+                    <p class="price">Rs. 2999</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">A journey through emotions,
+                <br> destiny, and belief</p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="pc8.jfif" alt="">
+                    <p class="text-title">Sulphite</p>
+                    <p class="price">Rs. 3000</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">Where secrets burn and 
+                <br> choices leave scars.</p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="pc9.jfif" alt="">
+                    <p class="text-title">Usri Yusra</p>
+                    <p class="price">Rs. 5,300</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">A journey of courage, secrets,
+                <br> and the strength within</p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="pc10.jfif" alt="">
+                    <p class="text-title">Namal</p>
+                    <p class="price">Rs. 3,400</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">revenge, and the ties that bind.</p>
+        </div>
+
+    </div>
+
+    <h1 class="heading"> English Novels</h1>
+
+<div class="section">  
+
+    <div class="card-wrapper">
+        <div class="card">
+            <div class="card-details">
+                <img src="img1.jpg" alt="">
+                <p class="text-title">It ends with us</p>
+                <p class="price">Rs.3000</p>
+            </div>
+            <button class="card-button">Buy Now</button>
+        </div>
+        <p class="card-description"> When love meets courage</p>
+    </div>
+
+    <div class="card-wrapper">
+        <div class="card">
+            <div class="card-details">
+                <img src="img2.jpg" alt="">
+                <p class="text-title">Girl in pieces</p>
+                <p class="price">Rs. 2700</p>
+            </div>
+            <button class="card-button">Buy Now</button>
+        </div>
+        <p class="card-description">Shattered but slowly 
+            <br>finding strength</p>
+    </div>
+
+    <div class="card-wrapper">
+        <div class="card">
+            <div class="card-details">
+                <img src="img3.jpg" alt="">
+                <p class="text-title">The bell jar</p>
+                <p class="price">Rs. 2800</p>
+            </div>
+            <button class="card-button">Buy Now</button>
+        </div>
+        <p class="card-description">A haunting dive into mind 
+            <br>and identity</p>
+    </div>
+
+    <div class="card-wrapper">
+        <div class="card">
+            <div class="card-details">
+                <img src="img4.jpg" alt="">
+                <p class="text-title">To kill a mocking bird</p>
+                <p class="price">Rs. 3,800</p>
+            </div>
+            <button class="card-button">Buy Now</button>
+        </div>
+        <p class="card-description">lessons of empathy and whats right</p>
+    </div>
+
+    <div class="card-wrapper">
+        <div class="card">
+            <div class="card-details">
+                <img src="img5.jpg" alt="">
+                <p class="text-title">Ugly love</p>
+                <p class="price">Rs. 3,200</p>
+            </div>
+            <button class="card-button">Buy Now</button>
+        </div>
+        <p class="card-description">When someones unforgettable</p>
+    </div>
+
+    <div class="card-wrapper">
+        <div class="card">
+            <div class="card-details">
+                <img src="img6.jpg" alt="">
+                <p class="text-title">Words that kill</p>
+                <p class="price">Rs. 2250</p>
+            </div>
+            <button class="card-button">Buy Now</button>
+        </div>
+        <p class="card-description">the power of words</p>
+    </div>
+
+    <div class="card-wrapper">
+        <div class="card">
+            <div class="card-details">
+                <img src="img7.jpg" alt="">
+                <p class="text-title">The gold finch</p>
+                <p class="price">Rs. 2999</p>
+            </div>
+            <button class="card-button">Buy Now</button>
+        </div>
+        <p class="card-description">A shattered life</p>
+    </div>
+
+    <div class="card-wrapper">
+        <div class="card">
+            <div class="card-details">
+                <img src="img8.jpg" alt="">
+                <p class="text-title">The fault in our stars</p>
+                <p class="price">Rs. 3000</p>
+            </div>
+            <button class="card-button">Buy Now</button>
+        </div>
+        <p class="card-description">A beautiful and heartbreaking journey</p>
+    </div>
+
+    <div class="card-wrapper">
+        <div class="card">
+            <div class="card-details">
+                <img src="img9.jpg" alt="">
+                <p class="text-title">The Last Letter</p>
+                <p class="price">Rs. 5,300</p>
+            </div>
+            <button class="card-button">Buy Now</button>
+        </div>
+        <p class="card-description">when one letter tells a lifetime of stories</p>
+    </div>
+
+    <div class="card-wrapper">
+        <div class="card">
+            <div class="card-details">
+                <img src="img10.jpg" alt="">
+                <p class="text-title">The fine print</p>
+                <p class="price">Rs. 3,400</p>
+            </div>
+            <button class="card-button">Buy Now</button>
+        </div>
+        <p class="card-description">Every detail hides a story</p>
+    </div>
+
+</div>
+  <div class="section">
+
+        <!--Cars-->
+
+        <h1 class="heading">Colouring Books</h1>
+     
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="C1.jpg" alt="">
+                    <p class="text-title">Stress release</p>
+                    <p class="price">Rs.3000</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">Let your creativity flow,
+                <br> one color at a time. </p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="C2.jpg" alt="">
+                    <p class="text-title">Printable coloring book</p>
+                    <p class="price">Rs. 2700</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">Relax, unwind, and
+                <br> bring pages to life.</p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="C3.jpg" alt="">
+                    <p class="text-title">Lil corner coloring book</p>
+                    <p class="price">Rs. 2800</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">A fun way to express
+                <br> your imagination.</p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="C4.jpg" alt="">
+                    <p class="text-title">Big fun coloring adventure</p>
+                    <p class="price">Rs. 3,800</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">Color, create, and enjoy
+                <br> every moment.</p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="C5.jpg" alt="">
+                    <p class="text-title">Zestloop coloring book</p>
+                    <p class="price">Rs. 3,200</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">Brighten your day with 
+                <br>vibrant designs. </p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="C6.jpg" alt="">
+                    <p class="text-title">Anime coloring book</p>
+                    <p class="price">Rs. 2250</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description"> Perfect for hours of creative fun</p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="C9.jpg" alt="">
+                    <p class="text-title">Biggeners coloring book</p>
+                    <p class="price">Rs. 2999</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">Turn blank pages into colorful masterpieces.</p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="C8.jpg" alt="">
+                    <p class="text-title">Fun Land clr book</p>
+                    <p class="price">Rs. 3000</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">Escape into a world of colors and shapes.</p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="C7.jpg" alt="">
+                    <p class="text-title">Heaven coloring book</p>
+                    <p class="price">Rs. 5,300</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">Fun for kids and adults alike!</p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="C10.jpg" alt="">
+                    <p class="text-title">Sea creatures coloring book</p>
+                    <p class="price">Rs. 3,400</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">Discover the joy of coloring and relaxing</p>
+        </div>
+
+    </div>
+     <div class="section">
+
+        <!--Cars-->
+
+        <h1 class="heading">Islamic Books</h1>
+     
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="01.jpg" alt="">
+                    <p class="text-title">The Power of Dua</p>
+                    <p class="price">Rs.3000</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">A powerful reminder of how dua <br> can transform lives</p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="02.jpg" alt="">
+                    <p class="text-title">A Muslim women's diary</p>
+                    <p class="price">Rs. 2700</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">heartfelt reflection of a <br> Muslim woman’s journey</p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="03.jpg" alt="">
+                    <p class="text-title">Islam taught me</p>
+                    <p class="price">Rs. 2800</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">A short, inspiring reflection on faith <br> and life lessons through Islam.
+</p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="04.jpg" alt="">
+                    <p class="text-title">Women in Islam</p>
+                    <p class="price">Rs. 3,800</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">A brief insight into the dignity, <br> rights, and role of women in Islam.</p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="05.jpg" alt="">
+                    <p class="text-title">Living with the Quran</p>
+                    <p class="price">Rs. 3,200</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">A simple guide to building a daily <br> connection with the Quran.</p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="06.jpg" alt="">
+                    <p class="text-title">Noor upon Noor</p>
+                    <p class="price">Rs. 2250</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">A gentle reminder of light, faith,<br> and spiritual awakening.</p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="07.jpg" alt="">
+                    <p class="text-title">I am Near</p>
+                    <p class="price">Rs. 2999</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">A comforting reminder that Allah is always <br> close to those who call upon Him</p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="08.jpg" alt="">
+                    <p class="text-title">Heart Therapy</p>
+                    <p class="price">Rs. 3000</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">A soothing read for healing the heart
+                <br> and finding peace through faith.</p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="09.jpg" alt="">
+                    <p class="text-title">Healing the Emptiness</p>
+                    <p class="price">Rs. 5,300</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">A gentle guide to filling the heart with 
+                <br>faith, hope, and inner peace.</p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="010.jpg" alt="">
+                    <p class="text-title">Timeless seeds of Advice</p>
+                    <p class="price">Rs. 3,400</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">Short, practical guidance for life
+                <br> rooted in faith and wisdom.</p>
+        </div>
+
+    </div>
+       <div class="section">
+
+        <!--Cars-->
+
+        <h1 class="heading">Kids Books</h1>
+     
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="1.jpg" alt="">
+                    <p class="text-title">lila's Secret</p>
+                    <p class="price">Rs.3000</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">little secret  big adventure </p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="2.jpg" alt="">
+                    <p class="text-title">Hansel and Gretel</p>
+                    <p class="price">Rs. 2700</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">candy, courage and clever kids</p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="3.jpg" alt="">
+                    <p class="text-title">Harry Potter</p>
+                    <p class="price">Rs. 2800</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">Wands up for courage and Fun</p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="4.jpg" alt="">
+                    <p class="text-title">Bell a Talking bunny</p>
+                    <p class="price">Rs. 3,800</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">Bell's story is full of laughs 
+                <br>and surprises</p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="5.jpg" alt="">
+                    <p class="text-title">The House that Whispers</p>
+                    <p class="price">Rs. 3,200</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">A house full of secrets </p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="6.jpg" alt="">
+                    <p class="text-title">A lil too Haunted</p>
+                    <p class="price">Rs. 2250</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description"> Spooky fun with a dash of mischief</p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="7.jpg" alt="">
+                    <p class="text-title">A season most Unfair</p>
+                    <p class="price">Rs. 2999</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">Adventures arent always fair</p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="8.jpg" alt="">
+                    <p class="text-title">Unlocking the Spell</p>
+                    <p class="price">Rs. 3000</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">key of magic is in ur hands</p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="9.jpg" alt="">
+                    <p class="text-title">Heaven coloring book</p>
+                    <p class="price">Rs. 5,300</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">Bravery shines even in the 
+                <br>darkest paths</p>
+        </div>
+        <div class="card-wrapper">
+            <div class="card">
+                <div class="card-details">
+                    <img src="10.jpg" alt="">
+                    <p class="text-title">Sea creatures</p>
+                    <p class="price">Rs. 3,400</p>
+                </div>
+                <button class="card-button">Buy Now</button>
+            </div>
+            <p class="card-description">Mystery hidden  among the exhibits</p>
+        </div>
+
+    </div>
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- LOGO + ABOUT -->
+    <div class="footer-col">
+      <img src="Taifnaat.png" width="100">
+      <p>We provide high quality gifts, stationery, and lifestyle products to make your everyday special.</p>
+    </div>
+
+    <!-- SHOP LINKS (NAVBAR MATCH) -->
+    <div class="footer-col">
+      <h3>Shop</h3>
+      <a href="index.html">Home</a>
+      <a href="giftarticles.html">Gift Articles</a>
+      <a href="dolls.html">Toys</a>
+      <a href="offsup.html">Office Supplies</a>
+      <a href="ArtSupp.html">Art Supplies</a>
+    </div>
+
+    <!-- MORE LINKS -->
+    <div class="footer-col">
+      <h3>More</h3>
+      <a href="cosmetics.html">Cosmetics</a>
+      <a href="books.html">Books</a>
+      <a href="gc.html">Greeting Cards</a>
+      <a href="bags.html">Bags</a>
+      <a href="wallets.html">Wallets</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+
+    <!-- NEWSLETTER -->
+    <div class="footer-col">
+      <h3>Get 10% OFF</h3>
+      <p>Subscribe to our newsletter</p>
+
+      <div class="newsletter">
+        <input type="email" placeholder="Enter your email">
+        <button>Subscribe</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 Taifnaat | All Rights Reserved
+  </div>
+
+</footer>
+  <script>
+
+        const cards = document.querySelectorAll('.card-wrapper');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const wrapper = entry.target;
+
+                    // Animate card inside wrapper
+                    const card = wrapper.querySelector('.card');
+                    if (card) card.classList.add('show');
+
+                    // Animate card-description outside card
+                    const desc = wrapper.querySelector('.card-description');
+                    if (desc) setTimeout(() => desc.classList.add('show'), 200);
+
+                }
+            });
+        }, { threshold: 0.3 });
+
+        cards.forEach(wrapper => observer.observe(wrapper));
+
+    </script>
+  <script src="index.js"></script>
+ <script src="main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+
+</html>
+                    
